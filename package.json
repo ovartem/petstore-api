@@ -1,0 +1,37 @@
+{
+  "name": "ovartem-petstore-api",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest",
+    "_typeCheck": "tsc",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && tsc -p tsconfig.build.json"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": "",
+  "keywords": ["axios", "petstore"],
+  "author": "ovartem",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.7"
+  },
+  "exports": {
+    "./api/*": {
+      "types": "./dist/types/api/*.d.ts",
+      "default": "./dist/api/*.js"
+    },
+    "./pet/*": {
+      "types": "./dist/types/api/services/pet/*.d.ts",
+      "default": "./dist/api/services/pet/*.js"
+    }
+  }
+}
