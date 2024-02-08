@@ -21,5 +21,7 @@
   "exclude": [
     "./node_modules",
     "./src/test",
+    "./src/performance",
+    "./src/api/k6Client.ts"
   ]
 }

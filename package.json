@@ -1,12 +1,15 @@
 {
   "name": "ovartem-petstore-api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "scripts": {
     "test": "jest",
     "_typeCheck": "tsc",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && tsc -p tsconfig.build.json"
+    "clean-k6": "rm -rf ./dist-k6 bundle",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "pack": "webpack",
+    "build-k6": "npm run clean-k6 && tsc -p tsconfig.k6.json && npm run pack"
   },
   "files": [
     "dist/**/*"
@@ -22,12 +25,17 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "@types/k6": "^0.48.0"
   },
   "exports": {
     "./api/*": {
       "types": "./dist/types/api/*.d.ts",
       "default": "./dist/api/*.js"
+    },
+    "./utils/*": {
+      "types": "./dist/types/utils/*.d.ts",
+      "default": "./dist/utils/*.js"
     },
     "./pet/*": {
       "types": "./dist/types/api/services/pet/*.d.ts",
